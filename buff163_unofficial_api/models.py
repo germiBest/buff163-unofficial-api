@@ -228,6 +228,8 @@ class Item:
 class SpecificItem:
     def __init__(
         self,
+        auction_sort_by_fields: List[Any],
+        auction_num: int,
         allow_bundle_inventory: bool,
         appid: int,
         asset_tags: List[Any],
@@ -249,6 +251,7 @@ class SpecificItem:
         has_paintwear_rank: bool,
         has_related: bool,
         has_rune: bool,
+        has_overprint_name: bool,
         id: int,
         is_container: bool,
         item_id: None,
@@ -287,6 +290,8 @@ class SpecificItem:
         is_charm: bool = None,
         keychain_color_img: str = None,
     ) -> None:
+        self.auction_sort_by_fields = auction_sort_by_fields
+        self.auction_num = auction_num
         self.allow_bundle_inventory = allow_bundle_inventory
         self.appid = appid
         self.asset_tags = asset_tags
@@ -307,6 +312,7 @@ class SpecificItem:
         self.has_buff_price_history = has_buff_price_history
         self.has_bundle_inventory_order = has_bundle_inventory_order
         self.has_fade_name = has_fade_name
+        self.has_overprint_name = has_overprint_name
         self.has_paintwear_rank = has_paintwear_rank
         self.has_related = has_related
         self.has_rune = has_rune

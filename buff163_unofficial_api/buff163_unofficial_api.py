@@ -143,5 +143,5 @@ class Buff163API:
         result = self._rest_adapter.get(
             endpoint=f"/market/goods/info?game=csgo&goods_id={item_id}"
         )
-
+ 
         return SpecificItem(**result.data["data"])
