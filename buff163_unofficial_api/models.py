@@ -228,6 +228,8 @@ class Item:
 class SpecificItem:
     def __init__(
         self,
+        auction_sort_by_fields: List[Any],
+        auction_num: int,
         allow_bundle_inventory: bool,
         appid: int,
         asset_tags: List[Any],
@@ -235,6 +237,8 @@ class SpecificItem:
         asset_tags_history: List[Any],
         bookmarked: bool,
         buy_num: int,
+        buy_max_price: int,
+        buy_min_price_limit: int,
         can_buy: bool,
         can_sort_by_heat: bool,
         container_type: str,
@@ -248,10 +252,14 @@ class SpecificItem:
         has_fade_name: bool,
         has_paintwear_rank: bool,
         has_related: bool,
+        has_rent_order: bool,
         has_rune: bool,
+        has_overprint_name: bool,
         id: int,
         is_container: bool,
+        is_charm: bool,
         item_id: None,
+        keychain_color_img: None,
         market_hash_name: str,
         market_min_price: int,
         name: str,
@@ -264,6 +272,9 @@ class SpecificItem:
         rank_types: List[Any],
         recent_sold_count: int,
         relative_goods: List[RelativeGood],
+        rent_day_choices: List[int],
+        rent_num: int,
+        rent_sort_by_fields: SortByFields,
         sell_min_price: str,
         sell_num: int,
         sell_reference_price: str,
@@ -274,17 +285,13 @@ class SpecificItem:
         steam_market_url: str,
         super_short_name: str,
         support_name_tag: bool,
+        support_charm: bool,
         transacted_num: int,
         user_show_count: int,
         wiki_link: None,
-        has_rent_order: bool,
-        rent_day_choices: List[int],
-        rent_num: int,
-        rent_sort_by_fields: SortByFields,
-        support_charm: bool,
-        buy_max_price: int = None,
-        buy_min_price_limit: int = None,
     ) -> None:
+        self.auction_sort_by_fields = auction_sort_by_fields
+        self.auction_num = auction_num
         self.allow_bundle_inventory = allow_bundle_inventory
         self.appid = appid
         self.asset_tags = asset_tags
@@ -305,11 +312,15 @@ class SpecificItem:
         self.has_buff_price_history = has_buff_price_history
         self.has_bundle_inventory_order = has_bundle_inventory_order
         self.has_fade_name = has_fade_name
+        self.has_overprint_name = has_overprint_name
         self.has_paintwear_rank = has_paintwear_rank
         self.has_related = has_related
+        self.has_rent_order = has_rent_order
         self.has_rune = has_rune
         self.id = id
         self.is_container = is_container
+        self.is_charm = is_charm
+        self.keychain_color_img = keychain_color_img
         self.item_id = item_id
         self.market_hash_name = market_hash_name
         self.market_min_price = market_min_price
@@ -323,6 +334,9 @@ class SpecificItem:
         self.rank_types = rank_types
         self.recent_sold_count = recent_sold_count
         self.relative_goods = relative_goods
+        self.rent_day_choices =  rent_day_choices
+        self.rent_num = rent_num
+        self.rent_sort_by_fields = rent_sort_by_fields
         self.sell_min_price = sell_min_price
         self.sell_num = sell_num
         self.sell_reference_price = sell_reference_price
@@ -333,6 +347,7 @@ class SpecificItem:
         self.steam_market_url = steam_market_url
         self.super_short_name = super_short_name
         self.support_name_tag = support_name_tag
+        self.support_charm = support_charm
         self.transacted_num = transacted_num
         self.user_show_count = user_show_count
         self.wiki_link = wiki_link
