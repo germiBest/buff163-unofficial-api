@@ -352,3 +352,19 @@ class SpecificItem:
         self.user_show_count = user_show_count
         self.wiki_link = wiki_link
 
+class ItemHistory: 
+    def __init__(
+        self, 
+        currency: str, 
+        currency_symbol: str, 
+        days: int, 
+        price_history: list, 
+        price_type: int, 
+        steam_price_currency: str,
+    ) -> None:
+        self.currency = currency
+        self.currency_symbol = currency_symbol
+        self.days = days
+        self.price_history = price_history
+        self.price_type = price_type
+        self.steam_price_currency = steam_price_currency

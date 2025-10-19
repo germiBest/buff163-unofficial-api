@@ -1,5 +1,5 @@
 import logging
-from typing import Iterator, Callable, Union
+from typing import Iterator, Callable, Union, Literal
 from buff163_unofficial_api.rest_adapter import RestAdapter
 from buff163_unofficial_api.models import *
 from buff163_unofficial_api.cs_enums import *
@@ -145,3 +145,17 @@ class Buff163API:
         )
 
         return SpecificItem(**result.data["data"])
+
+    def get_item_history(self, item_id: int, days: Literal[7, 30, 90, 180, 365], buff_price_type: Literal[1, 2]) -> List[Item]:
+        """Gets the history of an item given an amount of days and a price type. 
+           Returns a price history list in the format [UTC seconds, price sold] within date range.
+
+        Args:
+            item_id (int): Specific item's goods_id.
+            days (int): Days to get history for. Note: days must be 7, 30, 90, 180 or 365.
+            buff_price_type: Which Buff price history to get. 1 is Buff163 price, 2 is Steam price.
+        """
+        result = self._rest_adapter.get(
+            endpoint=f"/market/goods/price_history/buff?game=csgo&goods_id={item_id}&currency=CNY&days={days}&buff_price_type={buff_price_type}&with_sell_num=false"
+        )
+        return ItemHistory(**result.data["data"])
